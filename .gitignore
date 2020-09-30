@@ -7,3 +7,4 @@ react-webapp/react_webapp/static/
 react-webapp/react_webapp/templates/
 *.pyc
 .DS_Store
+*.egg-info/
