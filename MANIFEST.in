@@ -1,2 +1,3 @@
 include README.rst
+include omero_openwith_url/static/omero_openwith_url/openwith.js
 recursive-include omero_openwith_url *
