@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2019 University of Dundee.
+# Copyright (c) 2020 University of Dundee.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -22,5 +22,5 @@ from . import views
 urlpatterns = [
 
     # index 'home page' of the app
-    url(r'^$', views.index, name='index')
+    url(r'^$', views.index, name='openwith_url_index'),
 ]

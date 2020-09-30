@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2017 University of Dundee.
+# Copyright (c) 2020 University of Dundee.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -15,12 +15,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from django.conf.urls import url
+from django.http import HttpResponse
 
-from . import views
+def index(request, conn=None, **kwargs):
 
-urlpatterns = [
-
-    # index 'home page' of the app
-    url(r'^$', views.index, name='minimal_webapp_index'),
-]
+    return HttpResponse("OMERO openwith url")
