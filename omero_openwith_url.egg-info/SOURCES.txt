@@ -1,9 +1,0 @@
-README.rst
-setup.py
-omero_openwith_url/__init__.py
-omero_openwith_url/urls.py
-omero_openwith_url/views.py
-omero_openwith_url.egg-info/PKG-INFO
-omero_openwith_url.egg-info/SOURCES.txt
-omero_openwith_url.egg-info/dependency_links.txt
-omero_openwith_url.egg-info/top_level.txt
