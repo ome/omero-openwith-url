@@ -16,3 +16,23 @@ Dev install::
 Or install from master branch on github::
 
     pip install git+git://github.com/will-moore/omero-openwith-url.git@master#egg=omero-openwith-url
+
+
+How it works
+============
+
+The `open_with` config above adds an `vizarr` option to the Open-with menu of webclient.
+It also loads the static/omero_openwith_url/openwith.js script into the webclient.
+
+When the open-with contextmenu is opened, we use the Image ID to ping
+`https://s3.embassy.ebi.ac.uk/idr/zarr/v0.1/IMAGE_ID.zarr/.zgroup`. If we get
+any error, the `Open-with > vizarr` menu item is disabled.
+
+If the menu item it clicked, we Open the url configured above, replacing the $ID
+with the ID of the chosen Image.
+
+NB: to enable testing this when the actual ID of the Image doesn't match the
+IDR ID.zarr (when we're not running this on IDR itself), if the Image name starts with
+a number, so that parseInt(name) gives us a number, that will be used instead
+of the image ID.
+E.g. Name an Image like `6001240_B1_C1.tif` to Open `6001240.zarr`.
