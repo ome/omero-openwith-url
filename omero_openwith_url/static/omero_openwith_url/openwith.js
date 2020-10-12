@@ -55,14 +55,6 @@ OME.setOpenWithEnabledHandler("openwith_url", function (selected, callback) {
 // The URL provider returns a function, so that we can test
 // for the disabled flag added above and do nothing if 'disabled'
 OME.setOpenWithUrlProvider("openwith_url", function (selected, url) {
-    return function () {
-        let $li = getJsTreeContextMenuItem('vizarr');
-        // If it's not disabled, create URL and open window
-        if (!$li.data('disabled')) {
-            let idrId = getIdrIdForNode(selected[0]);
-            // We use the url from config, replacing '$ID'
-            url = url.replace('$ID', idrId);
-            window.open(url, '_blank');
-        }
-    };
+    let idrId = getIdrIdForNode(selected[0]);
+    return url.replace('$ID', idrId);
 });
