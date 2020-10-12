@@ -46,16 +46,8 @@ OME.setOpenWithEnabledHandler("openwith_url", function (selected) {
 
     fetch(url, { mode: 'cors'})
         .then(response => {
-            // If 404 etc, we disable the 'vizarr' menu item
-            // Since this is async, we have already returned 'true' below
-            // So we have to find and manually "disable" the menu-item
-            let $li = getJsTreeContextMenuItem('vizarr');
-            if (!response.ok) {
-                $li.addClass('vakata-contextmenu-disabled');
-                // this pseudo 'disabled' doesn't prevent the item being clicked
-                // so we add a flag that can be tested for below
-                $li.data('disabled', true);
-            }
+            // If response is OK (not 404 or 403) etc, we use callback to update menu item
+            callback(response.ok);
         })
 
     // Menu item is enabled, but may be disabled when fetch() returns.
