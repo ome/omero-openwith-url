@@ -28,16 +28,13 @@ function getJsTreeContextMenuItem(label) {
 
 // See https://docs.openmicroscopy.org/omero/5.6.2/developers/Web/LinkingFromWebclient.html#open-with
 // Here we set an 'enabled' handler that is passed a list of selected objects
-OME.setOpenWithEnabledHandler("openwith_url", function (selected) {
+OME.setOpenWithEnabledHandler("openwith_url", function (selected, callback) {
     // selected is a list of objects containing id, name, type
 
     // Only support single image
     if (selected.length !== 1 || selected[0].type !== 'image') {
         return false;
     }
-    // Can get this called when context menu is closing from previous node
-    // and name isn't defined
-    if (!selected[0].name) return false;
 
     let idrId = getIdrIdForNode(selected[0]);
 
