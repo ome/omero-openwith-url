@@ -28,16 +28,13 @@ function getJsTreeContextMenuItem(label) {
 
 // See https://docs.openmicroscopy.org/omero/5.6.2/developers/Web/LinkingFromWebclient.html#open-with
 // Here we set an 'enabled' handler that is passed a list of selected objects
-OME.setOpenWithEnabledHandler("openwith_url", function (selected) {
+OME.setOpenWithEnabledHandler("openwith_url", function (selected, callback) {
     // selected is a list of objects containing id, name, type
 
     // Only support single image
     if (selected.length !== 1 || selected[0].type !== 'image') {
         return false;
     }
-    // Can get this called when context menu is closing from previous node
-    // and name isn't defined
-    if (!selected[0].name) return false;
 
     let idrId = getIdrIdForNode(selected[0]);
 
@@ -46,16 +43,8 @@ OME.setOpenWithEnabledHandler("openwith_url", function (selected) {
 
     fetch(url, { mode: 'cors'})
         .then(response => {
-            // If 404 etc, we disable the 'vizarr' menu item
-            // Since this is async, we have already returned 'true' below
-            // So we have to find and manually "disable" the menu-item
-            let $li = getJsTreeContextMenuItem('vizarr');
-            if (!response.ok) {
-                $li.addClass('vakata-contextmenu-disabled');
-                // this pseudo 'disabled' doesn't prevent the item being clicked
-                // so we add a flag that can be tested for below
-                $li.data('disabled', true);
-            }
+            // If response is OK (not 404 or 403) etc, we use callback to update menu item
+            callback(response.ok);
         })
 
     // Menu item is enabled, but may be disabled when fetch() returns.
@@ -66,14 +55,6 @@ OME.setOpenWithEnabledHandler("openwith_url", function (selected) {
 // The URL provider returns a function, so that we can test
 // for the disabled flag added above and do nothing if 'disabled'
 OME.setOpenWithUrlProvider("openwith_url", function (selected, url) {
-    return function () {
-        let $li = getJsTreeContextMenuItem('vizarr');
-        // If it's not disabled, create URL and open window
-        if (!$li.data('disabled')) {
-            let idrId = getIdrIdForNode(selected[0]);
-            // We use the url from config, replacing '$ID'
-            url = url.replace('$ID', idrId);
-            window.open(url, '_blank');
-        }
-    };
+    let idrId = getIdrIdForNode(selected[0]);
+    return url.replace('$ID', idrId);
 });
