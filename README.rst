@@ -1,3 +1,6 @@
+.. image:: https://github.com/ome/omero-openwith-url/workflows/OMERO/badge.svg
+    :target: https://github.com/ome/omero-openwith-url/actions
+
 OMERO.web openwith URL
 ======================
 
