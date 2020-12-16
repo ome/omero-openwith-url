@@ -17,6 +17,7 @@
 
 from django.http import HttpResponse
 
+
 def index(request, conn=None, **kwargs):
 
     return HttpResponse("OMERO openwith url")
