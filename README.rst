@@ -28,7 +28,7 @@ The `open_with` config above adds an `vizarr` option to the Open-with menu of we
 It also loads the static/omero_openwith_url/openwith.js script into the webclient.
 
 When the open-with contextmenu is opened, we use the Image ID to ping
-`https://s3.embassy.ebi.ac.uk/idr/zarr/v0.1/IMAGE_ID.zarr/.zgroup`. If we get
+`https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.1/IMAGE_ID.zarr/.zgroup`. If we get
 any error, the `Open-with > vizarr` menu item is disabled.
 
 If the menu item it clicked, we Open the url configured above, replacing the $ID
