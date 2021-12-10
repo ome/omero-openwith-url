@@ -1,5 +1,5 @@
 
-// omero config append omero.web.open_with '["openwith_url", "https://hms-dbmi.github.io/vizarr?source=https%3A%2F%2Fs3.embassy.ebi.ac.uk%2Fidr%2Fzarr%2Fv0.1%2F$ID.zarr", {"script_url": "omero_openwith_url/openwith.js", "label":"vizarr"}]'
+// omero config append omero.web.open_with '["openwith_url", "https://hms-dbmi.github.io/vizarr?source=https%3A%2F%2Fuk1s3.embassy.ebi.ac.uk%2Fidr%2Fzarr%2Fv0.1%2F$ID.zarr", {"script_url": "omero_openwith_url/openwith.js", "label":"vizarr"}]'
 
 
 function getIdrIdForNode(node) {
@@ -39,7 +39,7 @@ OME.setOpenWithEnabledHandler("openwith_url", function (selected, callback) {
     let idrId = getIdrIdForNode(selected[0]);
 
     // We need to test whether image ID is available here...
-    let url = `https://s3.embassy.ebi.ac.uk/idr/zarr/v0.1/${idrId}.zarr/.zgroup`;
+    let url = `https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.1/${idrId}.zarr/.zgroup`;
 
     fetch(url, { mode: 'cors'})
         .then(response => {
