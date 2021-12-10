@@ -18,7 +18,7 @@ Dev install::
 
 Or install from master branch on github::
 
-    pip install git+git://github.com/will-moore/omero-openwith-url.git@master#egg=omero-openwith-url
+    pip install git+git://github.com/ome/omero-openwith-url.git@master#egg=omero-openwith-url
 
 
 How it works
@@ -37,5 +37,4 @@ with the ID of the chosen Image.
 NB: to enable testing this when the actual ID of the Image doesn't match the
 IDR ID.zarr (when we're not running this on IDR itself), if the Image name starts with
 a number, so that parseInt(name) gives us a number, that will be used instead
-of the image ID.
-E.g. Name an Image like `6001240_B1_C1.tif` to Open `6001240.zarr`.
+of the image ID e.g. Name an Image like `6001240_B1_C1.tif` to Open `6001240.zarr`.
