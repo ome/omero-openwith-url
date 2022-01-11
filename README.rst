@@ -18,7 +18,7 @@ Dev install::
 
 Or install from master branch on github::
 
-    pip install git+git://github.com/ome/omero-openwith-url.git@master#egg=omero-openwith-url
+    pip install git+https://github.com/ome/omero-openwith-url.git@master#egg=omero-openwith-url
 
 
 How it works
